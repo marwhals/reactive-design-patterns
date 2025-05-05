@@ -1,6 +1,8 @@
 # Reactive Design Patterns
 
-*Diagrams created with AI Assistant / AI Assistants*
+*Graph diagrams created with AI Assistant / AI Assistants*
+
+## Service Composition and Coordination Patterns
 
 ### Gateway Aggregator Pattern
 
