@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/reactive_design_patterns/bulkhead/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/reactive_design_patterns/circuit_breaker/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/reactive_design_patterns/gateway_aggregator/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/reactive_design_patterns/gateway_aggregator/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/reactive_design_patterns/orchestrator_parallel/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/reactive_design_patterns/orchestrator_sequential/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/reactive_design_patterns/rate_limiter/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/reactive_design_patterns/retry/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/reactive_design_patterns/scatter_gather/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/reactive_design_patterns/splitter/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/reactive_design_patterns/timeout/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />

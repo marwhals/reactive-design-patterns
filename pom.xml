@@ -27,6 +27,14 @@
     <modules>
         <module>reactive_design_patterns/gateway_aggregator</module>
         <module>reactive_design_patterns/timeout</module>
+        <module>reactive_design_patterns/bulkhead</module>
+        <module>reactive_design_patterns/circuit_breaker</module>
+        <module>reactive_design_patterns/orchestrator_parallel</module>
+        <module>reactive_design_patterns/orchestrator_sequential</module>
+        <module>reactive_design_patterns/rate_limiter</module>
+        <module>reactive_design_patterns/retry</module>
+        <module>reactive_design_patterns/scatter_gather</module>
+        <module>reactive_design_patterns/splitter</module>
     </modules>
 
     <dependencyManagement>
