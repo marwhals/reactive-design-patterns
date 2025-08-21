@@ -26,6 +26,7 @@
 
     <modules>
         <module>reactive_design_patterns/gateway_aggregator</module>
+        <module>reactive_design_patterns/timeout</module>
     </modules>
 
     <dependencyManagement>
