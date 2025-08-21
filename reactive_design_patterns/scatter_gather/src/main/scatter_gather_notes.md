@@ -28,3 +28,11 @@ C -->|Service response| A
 D -->|Service response| A
 
 ```
+
+### Summary
+
+- Similar to the aggregator
+- Scatters the message to all the target systems and then collects the response
+- Use Cases:
+  - Searching for data from multiple sources
+  - Divide the work and do parallel processing
