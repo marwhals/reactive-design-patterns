@@ -15,7 +15,7 @@ public class PromotionClient {
     private final PromotionResponse noPromotion = PromotionResponse.create(-1, "no promotion", 0.0, LocalDate.now());
     private final WebClient client;
 
-    public PromotionClient(@Value("${sec01.promotion.service}") String baseUrl){
+    public PromotionClient(@Value("${aggregator.promotion.service}") String baseUrl){
         this.client = WebClient.builder()
                 .baseUrl(baseUrl)
                 .build();
@@ -27,7 +27,7 @@ public class PromotionClient {
                 .uri("{id}", id)
                 .retrieve()
                 .bodyToMono(PromotionResponse.class)
-                .onErrorReturn(noPromotion);
+                .onErrorReturn(noPromotion); //error handling
     }
 
 

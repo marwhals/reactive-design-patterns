@@ -12,7 +12,7 @@ public class ProductClient {
 
     private final WebClient client;
 
-    public ProductClient(@Value("${sec01.product.service}") String baseUrl){
+    public ProductClient(@Value("${aggregator.product.service}") String baseUrl){
         this.client = WebClient.builder()
                 .baseUrl(baseUrl)
                 .build();
@@ -24,7 +24,7 @@ public class ProductClient {
                 .uri("{id}", id)
                 .retrieve()
                 .bodyToMono(ProductResponse.class)
-                .onErrorResume(ex -> Mono.empty());
+                .onErrorResume(ex -> Mono.empty()); // error handling
     }
 
 

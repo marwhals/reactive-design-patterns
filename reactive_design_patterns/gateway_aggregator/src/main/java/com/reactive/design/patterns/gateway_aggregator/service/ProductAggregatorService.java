@@ -23,12 +23,15 @@ public class ProductAggregatorService {
     @Autowired
     private ReviewClient reviewClient;
 
-    public void aggregate(Integer id){
-        Mono.zip(
-                this.productClient.getProduct(id),
-                this.promotionClient.getPromotion(id),
-                this.reviewClient.getReviews(id)
-        )
+    /**
+     * Zip is used here. If one call fails then the whole call fails.
+     */
+    public Mono<ProductAggregate> aggregate(Integer id){
+        return Mono.zip(
+                        this.productClient.getProduct(id),
+                        this.promotionClient.getPromotion(id),
+                        this.reviewClient.getReviews(id)
+                )
                 .map(t -> toDto(t.getT1(), t.getT2(), t.getT3()));
     }
 

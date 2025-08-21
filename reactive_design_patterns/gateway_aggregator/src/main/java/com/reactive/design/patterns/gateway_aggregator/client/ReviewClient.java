@@ -14,7 +14,7 @@ public class ReviewClient {
 
     private final WebClient client;
 
-    public ReviewClient(@Value("${sec01.review.service}") String baseUrl) {
+    public ReviewClient(@Value("${aggregator.review.service}") String baseUrl) {
         this.client = WebClient.builder()
                 .baseUrl(baseUrl)
                 .build();
@@ -27,7 +27,7 @@ public class ReviewClient {
                 .retrieve()
                 .bodyToFlux(Review.class)
                 .collectList()
-                .onErrorReturn(Collections.emptyList());
+                .onErrorReturn(Collections.emptyList()); // Error handling
     }
 
 }
