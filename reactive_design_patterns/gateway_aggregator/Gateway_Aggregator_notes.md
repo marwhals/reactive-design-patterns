@@ -38,3 +38,24 @@ B[Aggregator]
 
 - Notice - all the backend logic is hidden and the aggregator service acts like a proxy or a facade
 - From the client point of view it is just one call.
+
+---
+
+## Example diagram
+
+```mermaid
+graph LR
+    
+    A((WebBrowser))
+    B[Aggregator]
+    C[Review Service]
+    D[Product Service]
+    E[Promotions Service]
+    
+    A --> B
+    B --> C
+    B --> D
+    B --> E
+
+
+```
