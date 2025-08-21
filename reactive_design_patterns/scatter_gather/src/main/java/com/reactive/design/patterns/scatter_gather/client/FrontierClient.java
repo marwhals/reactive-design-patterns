@@ -4,7 +4,8 @@ import com.reactive.design.patterns.scatter_gather.dto.FlightResult;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.ToString;
-import lombok.Value;
+
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Flux;
