@@ -20,6 +20,10 @@ public class RoomClient {
                                .build();
     }
 
+    /**
+     * Note: Limits of HTTP prevent true streaming
+     * - Use gRPC or WebSockets
+     */
     public Flux<RoomReservationResponse> reserve(Flux<RoomReservationRequest> flux){
         return this.client
                 .post()
