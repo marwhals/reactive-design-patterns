@@ -2,8 +2,10 @@ package com.reactive.design.patterns.orchestrator_sequential.service;
 
 
 import com.reactive.design.patterns.orchestrator_sequential.client.ProductClient;
+import com.reactive.design.patterns.orchestrator_sequential.dto.OrchestrationRequestContext;
 import com.reactive.design.patterns.orchestrator_sequential.dto.OrderRequest;
 import com.reactive.design.patterns.orchestrator_sequential.dto.OrderResponse;
+import com.reactive.design.patterns.orchestrator_sequential.dto.Status;
 import com.reactive.design.patterns.orchestrator_sequential.util.DebugUtil;
 import com.reactive.design.patterns.orchestrator_sequential.util.OrchestrationUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,9 +16,6 @@ import reactor.core.publisher.Mono;
 public class OrchestratorService {
 
     @Autowired
-    private ProductClient productClient;
-
-    @Autowired
     private OrderFulfillmentService fulfillmentService;
 
     @Autowired
@@ -25,20 +24,10 @@ public class OrchestratorService {
     public Mono<OrderResponse> placeOrder(Mono<OrderRequest> mono){
         return mono
                 .map(OrchestrationRequestContext::new)
-                .flatMap(this::getProduct)
-                .doOnNext(OrchestrationUtil::buildRequestContext)
                 .flatMap(fulfillmentService::placeOrder)
                 .doOnNext(this::doOrderPostProcessing)
                 .doOnNext(DebugUtil::print) // for print debugging only
                 .map(this::toOrderResponse);
-    }
-
-    private Mono<OrchestrationRequestContext> getProduct(OrchestrationRequestContext orchestrationRequestContext){
-        return this.productClient.getProduct(orchestrationRequestContext.getOrderRequest().getProductId())
-                .map(Product::getPrice)
-                .doOnNext(orchestrationRequestContext::setProductPrice)
-//                .thenReturn(orchestrationRequestContext); <-- will lead to 500 from external service instead of 404
-                .map(i -> orchestrationRequestContext);
     }
 
     private void doOrderPostProcessing(OrchestrationRequestContext orchestrationRequestContext){

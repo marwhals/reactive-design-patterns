@@ -2,7 +2,8 @@ package com.reactive.design.patterns.orchestrator_sequential.util;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.reactive.design.patterns.orchestrator_parallel.dto.OrchestrationRequestContext;
+import com.reactive.design.patterns.orchestrator_sequential.dto.OrchestrationRequestContext;
+
 
 public class DebugUtil {
 
