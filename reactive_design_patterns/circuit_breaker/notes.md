@@ -13,3 +13,14 @@
 ---
 
 Spring cloud circuit breaker docs - https://spring.io/projects/spring-cloud-circuitbreaker/
+
+---
+
+### Summary
+
+- Allows the client service to operate normally when the upstream service is not healthy
+- You can use it along with Retry + Timeout
+- Resilience4j
+  - Spring, reactor support
+  - Ratelimiter, Bulkhead etc
+  - Config using YAML --- can be overriden using a config bean
