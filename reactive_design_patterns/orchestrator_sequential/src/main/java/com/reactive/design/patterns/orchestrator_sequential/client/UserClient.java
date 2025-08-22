@@ -42,6 +42,7 @@ public class UserClient {
 
     private PaymentResponse buildErrorResponse(PaymentRequest request){
         return PaymentResponse.create(
+                null,
                 request.getUserId(),
                 null,
                 request.getAmount(),
