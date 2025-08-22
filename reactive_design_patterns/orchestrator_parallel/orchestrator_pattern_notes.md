@@ -47,17 +47,25 @@ graph LR
 
 ```mermaid
 graph TD
-
     A[Order Orchestration]
-    B[order-fulfillment]
-    C[order-cancellation]
-    D[orchestrator]
-    E[payment-orchestrator]
-    F[inventory-orchestrator]
-    G[shipping-orchestrator]
-    H[userClient]
-    I[inventoryClient]
-    J[shippingClient]
+
+    subgraph service
+        B[order-fulfillment]
+        C[order-cancellation]
+    end
+
+    subgraph orchestrator
+        D[orchestrator]
+        E[payment-orchestrator]
+        F[inventory-orchestrator]
+        G[shipping-orchestrator]
+    end
+
+    subgraph client
+        H[userClient]
+        I[inventoryClient]
+        J[shippingClióent]
+    end
 
     A --> B
     A --> C
@@ -66,10 +74,9 @@ graph TD
     D --> E --> H
     D --> F --> I
     D --> G --> J
-
 %% Define styles
-classDef highlight stroke:#ff0000,stroke-width:3px;
-class A highlight;
+    classDef highlight stroke: #ff0000, stroke-width: 3px;
+    class A highlight;
 
 
 ```
