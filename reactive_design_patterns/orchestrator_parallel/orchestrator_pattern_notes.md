@@ -41,3 +41,35 @@ graph LR
 | Success         | Success      | Failed            | Success          | Failed       | refund user <br> cancel shipping       |
 | Success         | Success      | Success           | Failed           | Failed       | refund user <br> restore inventory     |
 
+---
+
+### Service layer implementation
+
+```mermaid
+graph TD
+
+    A[Order Orchestration]
+    B[order-fulfillment]
+    C[order-cancellation]
+    D[orchestrator]
+    E[payment-orchestrator]
+    F[inventory-orchestrator]
+    G[shipping-orchestrator]
+    H[userClient]
+    I[inventoryClient]
+    J[shippingClient]
+
+    A --> B
+    A --> C
+    B --> D
+    C --> D
+    D --> E --> H
+    D --> F --> I
+    D --> G --> J
+
+%% Define styles
+classDef highlight stroke:#ff0000,stroke-width:3px;
+class A highlight;
+
+
+```
