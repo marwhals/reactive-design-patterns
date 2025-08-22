@@ -21,7 +21,8 @@ public class ShippingOrchestrator extends Orchestrator{
     public Mono<OrchestrationRequestContext> create(OrchestrationRequestContext orchestrationRequestContext) {
         return this.client.schedule(orchestrationRequestContext.getShippingRequest())
                 .doOnNext(orchestrationRequestContext::setShippingResponse)
-                .thenReturn(orchestrationRequestContext);
+                .thenReturn(orchestrationRequestContext)
+                .handle(this.statusHandler());
     }
 
     @Override
