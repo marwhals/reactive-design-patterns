@@ -2,6 +2,8 @@ package com.reactive.design.patterns.circuit_breaker.client;
 
 
 import com.reactive.design.patterns.circuit_breaker.dto.Review;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import lombok.CustomLog;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Service;
@@ -24,6 +26,7 @@ public class ReviewClient {
                 .build();
     }
 
+    @CircuitBreaker(name = "review-service", fallbackMethod = "fallBackReview")
     public Mono<List<Review>> getReviews(Integer id){
         return this.client
                 .get()
@@ -33,8 +36,12 @@ public class ReviewClient {
                 .bodyToFlux(Review.class)
                 .collectList()
                 .retry(5) //<---- implementation -- see retryWhen
-                .timeout(Duration.ofMillis(300))
-                .onErrorReturn(Collections.emptyList());
+                .timeout(Duration.ofMillis(300));
+    }
+
+    public Mono<List<Review>> fallBackReview(Integer id, Throwable ex){
+        System.out.println("fallback reviews called : " + ex.getMessage());
+        return Mono.just(Collections.emptyList());
     }
 
 }
