@@ -2,6 +2,7 @@ package com.reactive.design.patterns.orchestrator_parallel.service;
 
 import com.reactive.design.patterns.orchestrator_parallel.client.ProductClient;
 import com.reactive.design.patterns.orchestrator_parallel.dto.*;
+import com.reactive.design.patterns.orchestrator_parallel.util.DebugUtil;
 import com.reactive.design.patterns.orchestrator_parallel.util.OrchestrationUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,6 +27,7 @@ public class OrchestratorService {
                 .doOnNext(OrchestrationUtil::buildRequestContext)
                 .flatMap(fulfillmentService::placeOrder)
                 .doOnNext(this::doOrderPostProcessing)
+                .doOnNext(DebugUtil::print) // for print debugging only
                 .map(this::toOrderResponse);
     }
 
