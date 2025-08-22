@@ -12,7 +12,7 @@ public class ProductClient {
 
     private final WebClient client;
 
-    public ProductClient(@Value("${sec07.product.service}") String baseUrl){
+    public ProductClient(@Value("${rate.limiter.product.service}") String baseUrl){
         this.client = WebClient.builder()
                                .baseUrl(baseUrl)
                                .build();
