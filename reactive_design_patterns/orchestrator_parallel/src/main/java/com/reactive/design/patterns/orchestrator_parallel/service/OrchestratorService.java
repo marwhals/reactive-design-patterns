@@ -35,6 +35,7 @@ public class OrchestratorService {
         return this.productClient.getProduct(orchestrationRequestContext.getOrderRequest().getProductId())
                 .map(Product::getPrice)
                 .doOnNext(orchestrationRequestContext::setProductPrice)
+//                .thenReturn(orchestrationRequestContext); <-- will lead to 500 from external service instead of 404
                 .map(i -> orchestrationRequestContext);
     }
 
