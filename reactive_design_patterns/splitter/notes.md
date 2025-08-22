@@ -1,0 +1,4 @@
+# Splitter pattern notes
+
+---
+
